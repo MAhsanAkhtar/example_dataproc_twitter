@@ -34,6 +34,7 @@ done
 [[ -z $BUCKET_NAME ]] && usage
 
 gcloud dataproc clusters create $CLUSTER_NAME \
+    --scopes sql-admin,storage-ro
     --metadata "JUPYTER_PORT=8124,JUPYTER_CONDA_PACKAGES=numpy" \
     --initialization-actions \
         gs://dataproc-initialization-actions/jupyter/jupyter.sh \
